@@ -24,6 +24,8 @@ public class CheckboxIOS extends ItemIOS {
     public void Initialize(Checkbox_ checkbox) {
         setCheckbox(checkbox);
         UIAccessibilityTraits traits = UIAccessibilityTraits.None;
+        this.setAccessibilityElement(true); //added in (needs testing)
+        this.setAccessibilityLabel("Checkbox"); //added in (needs testing)
         this.setAccessibilityTraits(traits);
         super.Initialize(checkbox);
     }
