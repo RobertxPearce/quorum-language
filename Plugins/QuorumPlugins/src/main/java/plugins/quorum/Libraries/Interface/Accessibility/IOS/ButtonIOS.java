@@ -26,6 +26,8 @@ public class ButtonIOS extends ItemIOS {
     public void Initialize(Button_ button) {
         SetButton(button);
         UIAccessibilityTraits traits = UIAccessibilityTraits.Button;
+        this.setAccessibilityElement(true);
+        this.setAccessibilityLabel("Button.");
         this.setAccessibilityTraits(traits);
         super.Initialize(button);
     }
