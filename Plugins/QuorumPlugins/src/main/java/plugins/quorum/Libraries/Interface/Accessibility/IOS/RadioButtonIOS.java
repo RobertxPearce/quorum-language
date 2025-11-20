@@ -22,24 +22,51 @@ public class RadioButtonIOS extends ItemIOS {
 
     public void Initialize(RadioButton_ radioButton) {
         setRadioButton(radioButton);
-        UIAccessibilityTraits traits = UIAccessibilityTraits.None;
-        this.setAccessibilityTraits(traits);
+
+        setAccessibilityLabel(radioButton.getText());
+
+        String tempValue;
+        if (radioButton.GetToggleState()){
+            tempValue = "selected";
+        }
+        else {
+            tempValue = "not selected";
+        }
+        setAccessibilityValue(tempValue);
+
+
+        UIAccessibilityTraits traits = UIAccessibilityTraits.Button;
+        if(radioButton.GetToggleState()){
+            traits = traits.plus(UIAccessibilityTraits.Selected);
+        }
+
+        setAccessibilityTraits(traits);
         super.Initialize(radioButton);
+
     }
+
 
     @Override
     public boolean activate() {
         boolean isToggled = radioButton.GetToggleState();
-        if (isToggled == true) {
-            radioButton.Activate();
-            radioButton.SetToggleState(false);
-            radioButton.ClickedMouse();
-            return false;
+
+        if (isToggled) {
+//            radioButton.Activate();
+//            radioButton.SetToggleState(false);
+//            radioButton.ClickedMouse();
+            return true;
         } else {
+            radioButton.SetToggleState(true);
             radioButton.Activate();
-            radioButton.SetToggleState(true);;
             radioButton.ClickedMouse();
+
+            setAccessibilityValue("selected");
+            setAccessibilityTraits(UIAccessibilityTraits.Button.plus(UIAccessibilityTraits.Selected));
+
             return true;
         }
+
+
+
     }
 }
