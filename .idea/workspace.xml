@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3951727-d8db-46fe-a22d-a22bbd91bf13" name="Changes" comment="">
+    <list default="true" id="d3951727-d8db-46fe-a22d-a22bbd91bf13" name="Changes" comment="Worked with Alex to try and fix Focus issue for Radio buttons. No luck yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/ButtonIOS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/ButtonIOS.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,9 +69,22 @@
       <workItem from="1760492440901" duration="10000" />
       <workItem from="1760492488290" duration="52000" />
     </task>
+    <task id="LOCAL-00001" summary="Worked with Alex to try and fix Focus issue for Radio buttons. No luck yet">
+      <option name="closed" value="true" />
+      <created>1763611477482</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763611477482</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Worked with Alex to try and fix Focus issue for Radio buttons. No luck yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked with Alex to try and fix Focus issue for Radio buttons. No luck yet" />
   </component>
 </project>
