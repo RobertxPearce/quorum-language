@@ -5,18 +5,22 @@ import quorum.Libraries.Interface.Controls.Button_;
 import quorum.Libraries.Interface.Item_;
 
 
+
 public class ButtonIOS extends ItemIOS {
     @Override
     public boolean isAccessibilityElement() {
         return true;
     }
 
+    Button_ button;
+    UIView view;
+
     public ButtonIOS(UIAccessibilityContainer container)
     {
         super(container);
+        view = new UIView();
+        view.setUserInteractionEnabled(true);
     }
-
-    Button_ button;
 
     public void SetButton(Button_ button)
     {
@@ -28,6 +32,16 @@ public class ButtonIOS extends ItemIOS {
         UIAccessibilityTraits traits = UIAccessibilityTraits.Button;
         this.setAccessibilityTraits(traits);
         super.Initialize(button);
+
+        UITapGestureRecognizer tap = new UITapGestureRecognizer(g -> activate());
+        view.addGestureRecognizer(tap);
+        ((UIView) getAccessibilityContainer()).addSubview(view);
+
+        UpdateViewFrame();
+    }
+
+    public void UpdateViewFrame() {
+        view.setFrame(getAccessibilityFrame());
     }
 
     @Override
