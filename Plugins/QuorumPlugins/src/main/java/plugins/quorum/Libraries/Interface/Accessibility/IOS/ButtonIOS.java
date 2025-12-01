@@ -1,6 +1,8 @@
 package plugins.quorum.Libraries.Interface.Accessibility.IOS;
 
 import org.robovm.apple.uikit.*;
+import org.robovm.apple.uikit.UIAccessibilityContainer;
+import org.robovm.apple.uikit.UIAccessibilityTraits;
 import quorum.Libraries.Interface.Controls.Button_;
 import quorum.Libraries.Interface.Item_;
 
@@ -13,13 +15,10 @@ public class ButtonIOS extends ItemIOS {
     }
 
     Button_ button;
-    UIView view;
 
     public ButtonIOS(UIAccessibilityContainer container)
     {
         super(container);
-        view = new UIView();
-        view.setUserInteractionEnabled(true);
     }
 
     public void SetButton(Button_ button)
@@ -32,21 +31,13 @@ public class ButtonIOS extends ItemIOS {
         UIAccessibilityTraits traits = UIAccessibilityTraits.Button;
         this.setAccessibilityTraits(traits);
         super.Initialize(button);
-
-        UITapGestureRecognizer tap = new UITapGestureRecognizer(g -> activate());
-        view.addGestureRecognizer(tap);
-        ((UIView) getAccessibilityContainer()).addSubview(view);
-
-        UpdateViewFrame();
-    }
-
-    public void UpdateViewFrame() {
-        view.setFrame(getAccessibilityFrame());
     }
 
     @Override
     public boolean activate() {
         button.Activate();
+        button.ClickedMouse();
         return true;
     }
+
 }
