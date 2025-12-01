@@ -29,17 +29,34 @@ public class RadioButtonIOS extends ItemIOS {
 
     @Override
     public boolean activate() {
-        boolean isToggled = radioButton.GetToggleState();
-        if (isToggled == true) {
-            radioButton.Activate();
-            radioButton.SetToggleState(false);
-            radioButton.ClickedMouse();
+
+///////////////Aidan and Nirbhay worked on this in a call///////////////
+        boolean isToggled = toggleButton.GetToggleState();
+        if(isToggled){
+            toggleButton.Activate();
+            toggleButton.ClickedMouse();
+            toggleButton.SetToggleState(false);
             return false;
-        } else {
-            radioButton.Activate();
-            radioButton.SetToggleState(true);;
-            radioButton.ClickedMouse();
+        }
+        else{
+            toggleButton.SetToggleState(false);
             return true;
         }
+
+
+
+///////////////OLD CODE FOR REFERENCE///////////////
+//        boolean isToggled = radioButton.GetToggleState();
+//        if (isToggled == true) {
+//            radioButton.Activate();
+//            radioButton.SetToggleState(false);
+//            radioButton.ClickedMouse();
+//            return false;
+//        } else {
+//            radioButton.Activate();
+//            radioButton.SetToggleState(true);;
+//            radioButton.ClickedMouse();
+//            return true;
+//        }
     }
 }
