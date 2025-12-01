@@ -31,7 +31,7 @@ public class ToggleButtonIOS extends ItemIOS {
 
     @Override
     public boolean activate() {
-        
+
        boolean isToggled = toggleButton.GetToggleState();
        if (isToggled == true) {
            toggleButton.Activate();
@@ -40,7 +40,7 @@ public class ToggleButtonIOS extends ItemIOS {
            return false;
        } else {
            toggleButton.Activate();
-           toggleButton.SetToggleState(true);;
+           toggleButton.SetToggleState(true);
            toggleButton.ClickedMouse();
            return true;
        }
