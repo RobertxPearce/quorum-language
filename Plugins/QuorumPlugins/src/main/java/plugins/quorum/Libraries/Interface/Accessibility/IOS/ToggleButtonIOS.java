@@ -31,17 +31,33 @@ public class ToggleButtonIOS extends ItemIOS {
 
     @Override
     public boolean activate() {
+///////////////Aidan and Nirbhay worked on this in a call///////////////
+
         boolean isToggled = toggleButton.GetToggleState();
-        if (isToggled == true) {
+        if(isToggled){
             toggleButton.Activate();
+            toggleButton.ClickedMouse();
             toggleButton.SetToggleState(false);
-            toggleButton.ClickedMouse();
             return false;
-        } else {
-            toggleButton.Activate();
-            toggleButton.SetToggleState(true);;
-            toggleButton.ClickedMouse();
+        }
+        else{
+            toggleButton.SetToggleState(false);
             return true;
         }
+
+
+///////////////old code for reference///////////////
+//        boolean isToggled = toggleButton.GetToggleState();
+//        if (isToggled == true) {
+//            toggleButton.Activate();
+//            toggleButton.SetToggleState(false);
+//            toggleButton.ClickedMouse();
+//            return false;
+//        } else {
+//            toggleButton.Activate();
+//            toggleButton.SetToggleState(true);;
+//            toggleButton.ClickedMouse();
+//            return true;
+//        }
     }
 }
