@@ -39,24 +39,11 @@ public class RadioButtonIOS extends ItemIOS {
             return false;
         }
         else{
-            radioButton.SetToggleState(false);
+            radioButton.Activate();
+            radioButton.ClickedMouse();
+            radioButton.SetToggleState(true);
             return true;
         }
 
-
-
-///////////////OLD CODE FOR REFERENCE///////////////
-//        boolean isToggled = radioButton.GetToggleState();
-//        if (isToggled == true) {
-//            radioButton.Activate();
-//            radioButton.SetToggleState(false);
-//            radioButton.ClickedMouse();
-//            return false;
-//        } else {
-//            radioButton.Activate();
-//            radioButton.SetToggleState(true);;
-//            radioButton.ClickedMouse();
-//            return true;
-//        }
     }
 }
