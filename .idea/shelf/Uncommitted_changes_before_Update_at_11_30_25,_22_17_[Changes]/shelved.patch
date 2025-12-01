@@ -1,0 +1,184 @@
+Index: Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package plugins.quorum.Libraries.Interface.Accessibility.IOS;\n\nimport org.robovm.apple.uikit.*;\nimport quorum.Libraries.Interface.Controls.RadioButton_;\nimport quorum.Libraries.Interface.Controls.ToggleButton_;\nimport quorum.Libraries.Interface.Item_;\npublic class RadioButtonIOS extends ItemIOS {\n    @Override\n    public boolean isAccessibilityElement() {\n        return true;\n    }\n\n    public RadioButtonIOS(UIAccessibilityContainer container) {\n        super(container);\n    }\n\n    RadioButton_ radioButton;\n\n    public void setRadioButton(RadioButton_ radioButton) {\n        this.radioButton = radioButton;\n    }\n\n    public void Initialize(RadioButton_ radioButton) {\n        setRadioButton(radioButton);\n        UIAccessibilityTraits traits = UIAccessibilityTraits.None;\n        this.setAccessibilityTraits(traits);\n        super.Initialize(radioButton);\n    }\n\n    @Override\n    public boolean activate() {\n        boolean isToggled = radioButton.GetToggleState();\n        if (isToggled == true) {\n            radioButton.Activate();\n            radioButton.SetToggleState(false);\n            radioButton.ClickedMouse();\n            return false;\n        } else {\n            radioButton.Activate();\n            radioButton.SetToggleState(true);;\n            radioButton.ClickedMouse();\n            return true;\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java b/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java
+--- a/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java	(revision 82b0b237021d89589ffd3b2ae2b46fb01f0b2cb0)
++++ b/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/RadioButtonIOS.java	(date 1764569752631)
+@@ -22,24 +22,51 @@
+ 
+     public void Initialize(RadioButton_ radioButton) {
+         setRadioButton(radioButton);
+-        UIAccessibilityTraits traits = UIAccessibilityTraits.None;
+-        this.setAccessibilityTraits(traits);
++
++        setAccessibilityLabel(radioButton.getText());
++
++        String tempValue;
++        if (radioButton.GetToggleState()){
++            tempValue = "selected";
++        }
++        else {
++            tempValue = "not selected";
++        }
++        setAccessibilityValue(tempValue);
++
++
++        UIAccessibilityTraits traits = UIAccessibilityTraits.Button;
++        if(radioButton.GetToggleState()){
++            traits = traits.plus(UIAccessibilityTraits.Selected);
++        }
++
++        setAccessibilityTraits(traits);
+         super.Initialize(radioButton);
++
+     }
++
+ 
+     @Override
+     public boolean activate() {
+         boolean isToggled = radioButton.GetToggleState();
+-        if (isToggled == true) {
+-            radioButton.Activate();
+-            radioButton.SetToggleState(false);
+-            radioButton.ClickedMouse();
+-            return false;
++
++        if (isToggled) {
++//            radioButton.Activate();
++//            radioButton.SetToggleState(false);
++//            radioButton.ClickedMouse();
++            return true;
+         } else {
++            radioButton.SetToggleState(true);
+             radioButton.Activate();
+-            radioButton.SetToggleState(true);;
+             radioButton.ClickedMouse();
++
++            setAccessibilityValue("selected");
++            setAccessibilityTraits(UIAccessibilityTraits.Button.plus(UIAccessibilityTraits.Selected));
++
+             return true;
+         }
++
++
++
+     }
+ }
+Index: Plugins/QuorumPlugins/.vscode/settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Plugins/QuorumPlugins/.vscode/settings.json b/Plugins/QuorumPlugins/.vscode/settings.json
+new file mode 100644
+--- /dev/null	(date 1764569752630)
++++ b/Plugins/QuorumPlugins/.vscode/settings.json	(date 1764569752630)
+@@ -0,0 +1,7 @@
++{
++    "workbench.colorCustomizations": {
++        "terminal.background": "#00000000",
++        "minimap.background": "#00000000",
++        "scrollbar.shadow": "#00000000"
++    }
++}
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1764569752629)
++++ b/.idea/vcs.xml	(date 1764569752629)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: Plugins/QuorumPlugins/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"temurin-1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Plugins/QuorumPlugins/.idea/misc.xml b/Plugins/QuorumPlugins/.idea/misc.xml
+--- a/Plugins/QuorumPlugins/.idea/misc.xml	(revision 82b0b237021d89589ffd3b2ae2b46fb01f0b2cb0)
++++ b/Plugins/QuorumPlugins/.idea/misc.xml	(date 1764569752630)
+@@ -1,7 +1,10 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="temurin-1.8" project-jdk-type="JavaSDK">
++  <component name="FrameworkDetectionExcludesConfiguration">
++    <file type="web" url="file://$PROJECT_DIR$" />
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1764569752629)
++++ b/.idea/modules.xml	(date 1764569752629)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/quorum-language.iml" filepath="$PROJECT_DIR$/.idea/quorum-language.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/CheckboxIOS.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package plugins.quorum.Libraries.Interface.Accessibility.IOS;\n\nimport org.robovm.apple.uikit.*;\nimport quorum.Libraries.Interface.Controls.Checkbox_;\nimport quorum.Libraries.Interface.Controls.ToggleButton_;\nimport quorum.Libraries.Interface.Item_;\n\npublic class CheckboxIOS extends ItemIOS {\n    @Override\n    public boolean isAccessibilityElement() {\n        return true;\n    }\n\n    public CheckboxIOS(UIAccessibilityContainer container) {\n        super(container);\n    }\n\n    Checkbox_ checkbox;\n\n    public void setCheckbox(Checkbox_ checkbox) {\n        this.checkbox = checkbox;\n    }\n\n    public void Initialize(Checkbox_ checkbox) {\n        setCheckbox(checkbox);\n        UIAccessibilityTraits traits = UIAccessibilityTraits.None;\n        this.setAccessibilityTraits(traits);\n        super.Initialize(checkbox);\n    }\n\n    @Override\n    public boolean activate() {\n        boolean isToggled = checkbox.GetToggleState();\n        if (isToggled == true) {\n            checkbox.Activate();\n            checkbox.SetToggleState(false);\n            checkbox.ClickedMouse();\n            return false;\n        } else {\n            checkbox.Activate();\n            checkbox.SetToggleState(true);;\n            checkbox.ClickedMouse();\n            return true;\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/CheckboxIOS.java b/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/CheckboxIOS.java
+--- a/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/CheckboxIOS.java	(revision 82b0b237021d89589ffd3b2ae2b46fb01f0b2cb0)
++++ b/Plugins/QuorumPlugins/src/main/java/plugins/quorum/Libraries/Interface/Accessibility/IOS/CheckboxIOS.java	(date 1764569752631)
+@@ -24,6 +24,8 @@
+     public void Initialize(Checkbox_ checkbox) {
+         setCheckbox(checkbox);
+         UIAccessibilityTraits traits = UIAccessibilityTraits.None;
++        this.setAccessibilityElement(true); //added in (needs testing)
++        this.setAccessibilityLabel("Checkbox"); //added in (needs testing)
+         this.setAccessibilityTraits(traits);
+         super.Initialize(checkbox);
+     }
+Index: .vscode/settings.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+new file mode 100644
+--- /dev/null	(date 1764569752630)
++++ b/.vscode/settings.json	(date 1764569752630)
+@@ -0,0 +1,7 @@
++{
++    "workbench.colorCustomizations": {
++        "terminal.background": "#00000000",
++        "minimap.background": "#00000000",
++        "scrollbar.shadow": "#00000000"
++    }
++}
+\ No newline at end of file
