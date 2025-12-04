@@ -33,15 +33,18 @@ public class ToggleButtonIOS extends ItemIOS {
     public boolean activate() {
 
        boolean isToggled = toggleButton.GetToggleState();
+       toggleButton.didBecomeFocused();
        if (isToggled == true) {
            toggleButton.Activate();
            toggleButton.SetToggleState(false);
            toggleButton.ClickedMouse();
+           toggleButton.didLoseFocus();
            return false;
        } else {
            toggleButton.Activate();
            toggleButton.SetToggleState(true);
            toggleButton.ClickedMouse();
+           toggleButton.didLoseFocus();
            return true;
        }
     }
