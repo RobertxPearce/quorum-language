@@ -31,17 +31,20 @@ public class RadioButtonIOS extends ItemIOS {
     public boolean activate() {
 
 ///////////////Aidan and Nirbhay worked on this in a call///////////////
+        radioButton.didBecomeFocused();
         boolean isToggled = radioButton.GetToggleState();
         if(isToggled){
             radioButton.Activate();
             radioButton.ClickedMouse();
             radioButton.SetToggleState(false);
+            radioButton.didLoseFocus();
             return false;
         }
         else{
             radioButton.Activate();
             radioButton.ClickedMouse();
             radioButton.SetToggleState(true);
+            radioButton.didLoseFocus();
             return true;
         }
 

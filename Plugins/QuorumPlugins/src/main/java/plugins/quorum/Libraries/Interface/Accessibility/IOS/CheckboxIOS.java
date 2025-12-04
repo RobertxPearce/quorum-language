@@ -38,7 +38,7 @@ public class CheckboxIOS extends ItemIOS {
             return false;
         } else {
             checkbox.Activate();
-            checkbox.SetToggleState(true);;
+            checkbox.SetToggleState(true);
             checkbox.ClickedMouse();
             return true;
         }
